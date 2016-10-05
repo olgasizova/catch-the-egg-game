@@ -41,3 +41,35 @@ li{
   text-decoration: none;
   float:right;
 }
+
+.flex-form{
+  width: 400px;
+  height: 200px;
+  background-color: none;
+  float: right;
+  margin-top: 50px
+}
+
+.game-title{
+  width: 900px;
+  height: 500px;
+  display: inline-block;
+  margin-top: 50px;
+  color: white;
+  font-size: 125px;
+  text-transform: uppercase;
+  font-family: 'Russo One', sans-serif;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
