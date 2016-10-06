@@ -24,3 +24,4 @@ var testEgg = new Egg({left: 10, top: -5});
 console.log(testEgg.startPosLeft);
 
 
+
