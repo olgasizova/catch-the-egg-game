@@ -9,6 +9,13 @@ function Egg(startHatch){
   this.startPosLeft = startHatch.left;
   this.starPosTop = startHatch.top;
 
+  // create div in memory to hold egg image
+  // set width, height and background via class egg in egg_style.css
+  // set left and top position via input parameters
+  this.$eggImageDiv = $('<div></div>').attr('class', 'egg')
+                                      .css('left', this.startPosLeft)
+                                      .css('top', this.starPosTop);
+
 
 };
 
