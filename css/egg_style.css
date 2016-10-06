@@ -103,6 +103,16 @@ li{
 
 }
 
+/*create class for egg */
+div.egg{
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background-color: orange;
+}
+
+
+
 
 
 
