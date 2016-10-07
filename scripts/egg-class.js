@@ -41,6 +41,7 @@ function Egg(chicken){
   this.$eggImageDiv = $('<div></div>').attr('class', 'egg')
                                       .css('left', this.startPosLeft)
                                       .css('top', this.starPosTop);
+                                      // .append('<img src=/assets/egg.png>');
   this.$chickenDiv.append(this.$eggImageDiv);
   this.fallDistance = window.innerHeight + 'px';
 
