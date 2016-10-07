@@ -1,20 +1,24 @@
 // Download DOM before running jQuery script
 $(document).ready(onLoad);
 
-
+var scope = {};
+// test creating new test
 function onLoad(){
 
     var firstChickenDiv = $('div.chicken').first();
 
-    var startHatchParam = {
-      left: 100,
-      top: 700,
+    var chickenOne = {
+      left: 50,
+      top: 70,
       $chickenDiv: firstChickenDiv
     }
 
     // This is a test function to work with the egg
-    var testEgg = new Egg(startHatchParam);
-    console.log(testEgg.startPosLeft);
+    scope.testEgg = new Egg(chickenOne);
+    console.log(scope.testEgg.startPosLeft);
+    window.setTimeout(function(){scope.testEgg.startFall();},1000);
+
+
 }
 
 
@@ -24,12 +28,12 @@ function onLoad(){
 
 // Create Class Egg with parameter startHatch
 // because I need to know the start position for every egg.
-function Egg(startHatch){
+function Egg(chicken){
   // this. is used to point to individual object
   // of future egg objects
-  this.startPosLeft = startHatch.left;
-  this.starPosTop = startHatch.top;
-  this.$chickenDiv = startHatch.$chickenDiv;
+  this.startPosLeft = chicken.left;
+  this.starPosTop = chicken.top;
+  this.$chickenDiv = chicken.$chickenDiv;
 
   // create div in memory to hold egg image
   // set width, height and background via class egg in egg_style.css
@@ -38,8 +42,15 @@ function Egg(startHatch){
                                       .css('left', this.startPosLeft)
                                       .css('top', this.starPosTop);
   this.$chickenDiv.append(this.$eggImageDiv);
+  this.fallDistance = window.innerHeight + 'px';
+
+  this.startFall = function(){
+    this.$eggImageDiv.animate({top: this.fallDistance}, window.innerHeight * 10, 'linear', this.breakEgg);
+  };
 
 
+
+  this.breakEgg = function(){}
 
 
 };
