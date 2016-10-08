@@ -32,7 +32,7 @@ function Egg(chicken){
   // this. is used to point to individual object
   // of future egg objects
   this.startPosLeft = chicken.left;
-  this.starPosTop = chicken.top;
+  this.startPosTop = chicken.top;
   this.$chickenDiv = chicken.$chickenDiv;
 
   // create div in memory to hold egg image
@@ -40,10 +40,10 @@ function Egg(chicken){
   // set left and top position via input parameters
   this.$eggImageDiv = $('<div></div>').attr('class', 'egg')
                                       .css('left', this.startPosLeft)
-                                      .css('top', this.starPosTop);
-                                      // .append('<img src=/assets/egg.png>');
+                                      .css('top', this.startPosTop);
+
   this.$chickenDiv.append(this.$eggImageDiv);
-  this.fallDistance = window.innerHeight + 'px';
+  this.fallDistance = window.innerHeight - this.startPosTop + 'px';
 
   this.startFall = function(){
     this.$eggImageDiv.animate({top: this.fallDistance}, window.innerHeight * 10, 'linear', this.breakEgg);
@@ -51,7 +51,11 @@ function Egg(chicken){
 
 
 
-  this.breakEgg = function(){}
+  this.breakEgg = function(){
+    $(this).fadeOut('slow', function(){$(this).remove();});
+
+
+  };
 
 
 };
