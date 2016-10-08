@@ -80,37 +80,80 @@ li{
     justify-content: space-around;
     width: 90%;
     height: 100px;
-    background-color: gray;
+    /*background-color: gray;*/
     margin: auto;
 
 }
 
-.chicken{
-   width: 90px;
-    height: 90px;
-    background-color: black;
+/*chicken image credit: http://nachalo4ka.ru/kartinki-dlya-detey-domashnie-zhivotnyie/kuritsa-4/*/
+
+div.chicken{
+   width: 150px;
+    height: 150px;
+    /*background-color: black;*/
     margin: 1px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("../assets/chicken_cartoon.png");
 }
 
-.basket{
-  width: 100px;
-  height: 100px;
-  background-color: brown;
+div.chick-1{
+  background-image: url("../assets/chicken-1.png");
+}
+
+div.chick-2{
+  background-image: url("../assets/chicken-2.png");
+}
+
+div.chick-3{
+  background-image: url("../assets/chicken-3.png");
+}
+
+div.chick-4{
+  background-image: url("../assets/chicken-4.png");
+
+}
+
+/*wolf credit image: http://www.liveinternet.ru/users/ksenya124/post343614219*/
+div.wolf{
+  width: 600px;
+  height: 300px;
+  background-image: url("../assets/wolf.png");
+  background-repeat: no-repeat;
+  background-size: contain;
   position: absolute;
-  bottom: 20px;
+  bottom: -10px;
   left: 45%;
 
 
+
+}
+
+div.wolf-left{
+  background-image: url("../assets/wolf_left.png");
+  background-position: right;
+}
+
+
+div.basket{
+width: 80px;
+height: 80px;
+background-color: red;
+margin:auto;
+margin-top: 70px;
 }
 
 /*create class for egg */
 div.egg{
   width: 50px;
   height: 50px;
-  /*position: absolute;*/
-  background-color: orange;
-  /*background: url('../assets/egg.png');*/
+  position: absolute;
+  background-size: contain;
+ /* background-color: yellow;*/
+  background-repeat: no-repeat;
+  background-image: url("../assets/egg.png");
 }
+
 
 
 
