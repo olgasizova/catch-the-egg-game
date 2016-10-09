@@ -7,14 +7,10 @@ function onLoad(){
 
     var firstChickenDiv = $('div.chicken').first();
 
-    var chickenOne = {
-      left: 50,
-      top: 70,
-      $chickenDiv: firstChickenDiv
-    }
+
 
     // This is a test function to work with the egg
-    scope.testEgg = new Egg(chickenOne);
+    scope.testEgg = new Egg(firstChickenDiv);
     console.log(scope.testEgg.startPosLeft);
     window.setTimeout(function(){scope.testEgg.startFall();},1000);
 
@@ -28,12 +24,13 @@ function onLoad(){
 
 // Create Class Egg with parameter startHatch
 // because I need to know the start position for every egg.
-function Egg(chicken){
+function Egg($chickenDiv){
   // this. is used to point to individual object
   // of future egg objects
-  this.startPosLeft = chicken.left;
-  this.startPosTop = chicken.top;
-  this.$chickenDiv = chicken.$chickenDiv;
+  var position = $chickenDiv.position();
+  this.startPosLeft = position.left + $chickenDiv.width()/2 - 20;
+  this.startPosTop = position.top + $chickenDiv.height() - 30;
+  this.$chickenDiv = $chickenDiv;
 
   // create div in memory to hold egg image
   // set width, height and background via class egg in egg_style.css
@@ -53,6 +50,7 @@ function Egg(chicken){
 
   this.breakEgg = function(){
     $(this).fadeOut('slow', function(){$(this).remove();});
+
 
 
   };
