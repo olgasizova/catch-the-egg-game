@@ -124,10 +124,8 @@ div.wolf{
   position: absolute;
   bottom: -10px;
   left: 45%;
-
-
-
 }
+
 
 div.wolf-left{
   background-image: url("../assets/wolf_left.png");
@@ -136,11 +134,15 @@ div.wolf-left{
 
 
 div.basket{
-width: 80px;
-height: 80px;
-background-color: red;
-margin:auto;
-margin-top: 70px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid black;
+  /*background-color: red;*/
+ /* left: 50%;*/
+  margin:auto;
+  position:relative;
+  top: 60px;
+
 }
 
 /*create class for egg */

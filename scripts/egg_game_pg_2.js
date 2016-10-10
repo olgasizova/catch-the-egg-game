@@ -18,7 +18,7 @@ function onLoad(){
   $(document).keydown(moveWolf);
 
 // start hatching eggs for all chicken divs
-    window.setTimeout(chickensStartHatch, 1000);
+    // window.setTimeout(chickensStartHatch, 1000);
 };
 
 

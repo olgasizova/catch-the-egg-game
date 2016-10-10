@@ -7,11 +7,11 @@ var scope = {};
 // This is a test function to work with the egg
 function onLoad(){
 
-    // var firstChickenDiv = $('div.chicken').first();
+    var firstChickenDiv = $('div.chicken').first();
 
-    // scope.testEgg = new Egg(firstChickenDiv);
-    // console.log(scope.testEgg.startPosLeft);
-    // window.setTimeout(function(){scope.testEgg.startFall();},1000);
+    scope.testEgg = new Egg(firstChickenDiv);
+    console.log(scope.testEgg.startPosLeft);
+    window.setTimeout(function(){scope.testEgg.startFall();},1000);
 
 
 }
@@ -27,9 +27,10 @@ function Egg($chickenDiv){
   // this. is used to point to individual object
   // of future egg objects
   // position: https://api.jquery.com/position/
-  this.chickenDivPosition = $chickenDiv.position();
+  this.chickenDivPosition = $chickenDiv.offset();
   this.startPosLeft = this.chickenDivPosition.left + $chickenDiv.width()/2 - 20;
   this.startPosTop = this.chickenDivPosition.top + $chickenDiv.height() - 30;
+
 
 
   // create div in memory to hold egg image
@@ -41,27 +42,74 @@ function Egg($chickenDiv){
 
   $chickenDiv.append(this.$eggImageDiv);
   // calculate distance of egg fall by subtracting it's position from the window
-  this.fallDistance = window.innerHeight - this.startPosTop + 'px';
+  var basket = new Basket();
+  this.distanceToBasket = basket.basketTop;
 
   //create function startFall to animate egg drop and find out the height
   // of the window and myltipy by to 10 to control speed.
   // this.breakEgg is a callback function that will called after
   // egg animation is complete
-  var milliSeconds = window.innerHeight * 10;
+  var milliSeconds = window.innerHeight * 20;
+
+  //capture 'this' into separate variable to use it for
+  // further calcution. 'this' will change its meaning inside
+  // local functions and loops therefore we need to capture it in
+  // a separate variabe. Credit for 'var basketObject = 'this' goes to:
+  // http://stackoverflow.com/questions/520019/controlling-the-value-of-this-in-a-jquery-event
+
+  var eggObject = this;
+
   this.startFall = function(){
-    this.$eggImageDiv.animate({top: this.fallDistance}
-                            , milliSeconds, 'linear', this.breakEgg);
+    this.$eggImageDiv.animate({top: this.distanceToBasket}
+                            , milliSeconds, 'linear', this.catchEgg);
   };
 
 
 // this.breakEgg is a callback function triggered by animate function
 // after animation is complete
 // remove() is opposite of append to remove from DOM
+  this.catchEgg = function(){
+    //$(this).fadeOut('slow', function(){$(this).remove();});
+    var $eggDiv = $(this);
+    $eggDiv.css('border', '2px solid purple');
+    var $eggPosition = $eggDiv.offset();
+
+    var basket = new Basket();
+    var basketRight = basket.basketRight;
+    var basketLeft = basket.basketLeft;
+    var eggLeft = $eggPosition.left;
+    var eggRight = $eggPosition.left + $eggDiv.width();
+
+    var isCatched = basketRight > eggRight
+                    && basketLeft < eggLeft;
+    if(isCatched){
+      eggObject.breakEgg();
+
+    }else{
+      eggObject.missedEgg();
+    }
+
+
+
+
+
+
+
+  };
+
+
+  this.missedEgg = function(){
+    var $egg = eggObject.$eggImageDiv;
+    $egg.animate({top: window.innerHeight - $egg.height()}
+                            , 1000, 'linear', eggObject.breakEgg);
+
+
+
+  }
+
   this.breakEgg = function(){
-    $(this).fadeOut('slow', function(){$(this).remove();});
-
-
-
+    var $egg = eggObject.$eggImageDiv;
+    $egg.fadeOut('slow', function(){$egg.remove();});
   };
 
 
