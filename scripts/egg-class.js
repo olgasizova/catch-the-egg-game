@@ -5,16 +5,16 @@ var scope = {};
 // test creating new test
 
 // This is a test function to work with the egg
-function onLoad(){
+// function onLoad(){
 
-    var firstChickenDiv = $('div.chicken').first();
+//     var firstChickenDiv = $('div.chicken').first();
 
-    scope.testEgg = new Egg(firstChickenDiv);
-    console.log(scope.testEgg.startPosLeft);
-    window.setTimeout(function(){scope.testEgg.startFall();},1000);
+//     scope.testEgg = new Egg(firstChickenDiv);
+//     console.log(scope.testEgg.startPosLeft);
+//     window.setTimeout(function(){scope.testEgg.startFall();},1000);
 
 
-}
+// }
 
 
 
@@ -49,7 +49,7 @@ function Egg($chickenDiv){
   // of the window and myltipy by to 10 to control speed.
   // this.breakEgg is a callback function that will called after
   // egg animation is complete
-  var milliSeconds = window.innerHeight * 20;
+  var milliSeconds = window.innerHeight * 15;
 
   //capture 'this' into separate variable to use it for
   // further calcution. 'this' will change its meaning inside
@@ -71,7 +71,7 @@ function Egg($chickenDiv){
   this.catchEgg = function(){
     //$(this).fadeOut('slow', function(){$(this).remove();});
     var $eggDiv = $(this);
-    $eggDiv.css('border', '2px solid purple');
+    // $eggDiv.css('border', '2px solid purple');
     var $eggPosition = $eggDiv.offset();
 
     var basket = new Basket();
@@ -83,7 +83,9 @@ function Egg($chickenDiv){
     var isCatched = basketRight > eggRight
                     && basketLeft < eggLeft;
     if(isCatched){
-      eggObject.breakEgg();
+      $eggDiv.fadeOut('slow', function(){$egg.remove();});
+      // credit parseInt Vladimir Cherny
+      $('div.score').text(parseInt($('div.score').text()) + 1);
 
     }else{
       eggObject.missedEgg();
@@ -108,9 +110,11 @@ function Egg($chickenDiv){
   }
 
   this.breakEgg = function(){
-    var $egg = eggObject.$eggImageDiv;
-    $egg.fadeOut('slow', function(){$egg.remove();});
+    var score = $('div.score').text();
+    $(document.location).attr('href','egg_game_pg_1.html?score=' + score);
+
   };
+
 
 
 };

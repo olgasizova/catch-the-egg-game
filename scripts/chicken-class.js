@@ -32,7 +32,7 @@ function Chicken($chickenDiv){
 // calling function startFall of nextEgg object
     this.nextEgg.startFall();
 // calculate period when next egg will start falling
-    var nextEggTime = getRandomInt(3000, 8000);
+    var nextEggTime = getRandomInt(14000, 20000);
     // credit for bind this http://stackoverflow.com/questions/5911211/settimeout-inside-javascript-class-using-this
     window.setTimeout(this.hatchEggs.bind(this), nextEggTime);
 

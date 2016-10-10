@@ -1,4 +1,4 @@
-body{
+html,body{
   background-color: #67E89B;
   width: 100%;
   height: 100%;
@@ -6,25 +6,18 @@ body{
   position: absolute;
 }
 
-.main{
-  margin: auto;
-  width: 1366px;
-  height: 800px;
-  /*background-color: white;*/
-}
+
 
 nav {
-  width: 100%;
-  margin: auto;
+  width: 90%;
   margin-top: 20px;
-  float: right;
   padding-right: 20px;
   font-family: 'Rubik', sans-serif;
   font-weight: 500;
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
-
+  position:absolute;
 }
 
 a{
@@ -44,17 +37,20 @@ li{
   float:right;
 }
 
-.flex-form{
-  width: 400px;
-  height: 200px;
-  background-color: none;
-  float: right;
-  margin-top: 50px
+div.login-form{
+  position: absolute;
+  right: 100px;
+  margin-top: 50px;
+  font-family: 'Rubik', sans-serif;
+}
+
+span.login-title{
+  padding-right:10px;
+  color:red;
 }
 
 .game-title{
-  width: 900px;
-  height: 500px;
+  margin-left: 100px;
   display: inline-block;
   margin-top: 50px;
   color: white;
@@ -136,7 +132,7 @@ div.wolf-left{
 div.basket{
   width: 120px;
   height: 120px;
-  border: 1px solid black;
+/*  border: 1px solid black;*/
   /*background-color: red;*/
  /* left: 50%;*/
   margin:auto;
@@ -154,6 +150,47 @@ div.egg{
  /* background-color: yellow;*/
   background-repeat: no-repeat;
   background-image: url("../assets/egg-2.png");
+}
+
+div.score{
+  font-family: 'Russo One', sans-serif;
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  left: 40px;
+  top: 200px;
+  color: white;
+  font-size: 70px;
+
+}
+
+table.score-table{
+  color: white;
+  position: absolute;
+  border: 1px solid white;
+  width: 20%;
+  right: 20px;
+  top: 50%;
+  font-family: 'Rubik', sans-serif;
+}
+
+table.score-table td{
+  padding-left: 30px;
+  border: 1px solid white;
+  font-family: 'Rubik', sans-serif;
+
+}
+
+.start-button{
+
+}
+
+.player{
+
+}
+
+.login{
+
 }
 
 

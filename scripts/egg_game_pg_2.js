@@ -18,7 +18,7 @@ function onLoad(){
   $(document).keydown(moveWolf);
 
 // start hatching eggs for all chicken divs
-    // window.setTimeout(chickensStartHatch, 1000);
+    window.setTimeout(chickensStartHatch, 100);
 };
 
 
@@ -49,7 +49,15 @@ function chickensStartHatch(){
 // create object chicken object from Chicken clas
                                   var $eachChickenObject = new Chicken($eachChickenDiv);
 // envoke method hatchEggs in each instance of Chicken Class
-                                  $eachChickenObject.hatchEggs();
+                                  window.setTimeout(function(){
+                                       $eachChickenObject.hatchEggs();
+                                     }, (index + 1) * 5000
+                                  );
+
+
+
+
+
                               });
 
 }
