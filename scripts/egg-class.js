@@ -111,7 +111,9 @@ function Egg($chickenDiv){
 
   this.breakEgg = function(){
     var score = $('div.score').text();
-    $(document.location).attr('href','egg_game_pg_1.html?score=' + score);
+    var player = $.urlParam('player');
+    $(document.location).attr('href','egg_game_pg_1.html?score=' + score + '&player=' + player);
+
 
   };
 
@@ -119,6 +121,19 @@ function Egg($chickenDiv){
 
 };
 
+
+// plugin function from http://snipplr.com/view/26662/get-url-parameters-with-jquery--improved/
+
+$.urlParam = function(name) {
+
+     url = window.location.href;
+
+    var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(url);
+    if (!results) {
+        return undefined;
+    }
+    return unescape(results[1]) || undefined;
+}
 
 
 
