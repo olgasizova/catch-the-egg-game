@@ -112,7 +112,7 @@ function Egg($chickenDiv){
   this.breakEgg = function(){
     var score = $('div.score').text();
     var player = $.urlParam('player');
-    $(document.location).attr('href','egg_game_pg_1.html?score=' + score + '&player=' + player);
+    $(document.location).attr('href','index.html?score=' + score + '&player=' + player);
 
 
   };
